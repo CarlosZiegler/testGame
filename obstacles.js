@@ -1,8 +1,11 @@
 class Obstacles {
-  constructor(randomY) {
+  constructor(randomY, randomO) {
     this.x = width;
     this.y = randomY;
-    this.img = game.broccoli;
+    this.item=game.food[randomO];
+    this.IG=this.item.IG;
+    this.health=this.item.health
+    this.img = this.item.src;
     this.width = this.img.width;
     this.height = this.img.height;
   }
@@ -35,7 +38,7 @@ class Obstacles {
       return false;
     }
   }
-  drawingObstacles() {
+  drawObstacles() {
     this.x -= 2;
     image(this.img, this.x, this.y, this.width, this.height);
   }

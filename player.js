@@ -1,42 +1,35 @@
 class Player {
   constructor() {
-    this.gravity = 0.5;
-    this.speed = 5;
+    this.gravity = 0.6;
+    this.speed = 9;
     this.jumps = 0;
-    this.x = 50;
+    this.x = 100;
+    this.health=100;
+    this.bloodGlucose=120;
   }
   setupPlayer() {
-    //here i am setting some variables based on the images height and width
-    this.y = height - 100;
+    this.y = height - 200; //cool falling effect
     this.width = game.playerImg.width;
     this.height = game.playerImg.height;
   }
   jump() {
     this.jumps += 1;
-
-    // check how many times the player before touching the ground
     if (this.jumps < 3) {
-      this.speed = -8;
+      this.speed = -11 ;
     }
-    //console.log("know i am jumping");
-
-    // ANOTHER APPROACH WITHOUT THE JUMP VARIABLES
-    /*  if(this.y >= height - game.playerImg.height){
-        this.speed = -5;
-    } */
   }
-  drawingThePlayer() {
-    //gravity pushes poor antonio down in the canvas
+  drawPlayer() {
     this.speed += this.gravity;
     this.y += this.speed;
-    // console.log(this.speed.toFixed(2));
-    // this if statement is to check that gravity doesnt affect antonio if he is outside of the canvas :D
+    //14 pixels from the bottom is where the grass ends!
     if (this.y >= height - game.playerImg.height-14) {
       this.y = height - game.playerImg.height-14;
-      //we set the jumps to 0 so we can jump again
       this.jumps = 0;
     }
-    // here i dont pass any width or height into the image function so the image takes the original size of the running man
-    image(game.playerImg, this.x, this.y);
+    if (this.jumps>0) {
+      image(game.playerJmp, this.x, this.y); //jumping character
+    } else {
+      image(game.playerImg, this.x, this.y);
+    }
   }
 }
