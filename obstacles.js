@@ -3,8 +3,9 @@ class Obstacles {
     this.x = width;
     this.y = randomY;
     this.item=game.food[randomO];
-    this.IG=this.item.IG;
-    this.health=this.item.health
+    this.gi=this.item.gi;
+    this.name=this.item.name;
+    this.health=this.item.health;
     this.img = this.item.src;
     this.width = this.img.width;
     this.height = this.img.height;
@@ -18,20 +19,16 @@ class Obstacles {
     let bottomSide = this.y + this.height;
     let playerTopSide = player.y;
     let playerBottomSide = player.y + player.height;
-    //console.log(leftSide, playerLeftSide, playerRightSide);
     let xCollision =
       leftSide > playerLeftSide - 10 &&
       leftSide < playerRightSide + 10 &&
       rightSide > playerLeftSide - 10 &&
       rightSide < playerRightSide + 10;
-
     let yCollision =
       topSide > playerTopSide - 10 &&
       topSide < playerBottomSide + 10 &&
       bottomSide > playerTopSide - 10 &&
       bottomSide < playerBottomSide + 10;
-    /*       playerLeftSide > leftSide > playerRightSide &&
-      playerLeftSide > rightSide > playerRightSide; */
     if (yCollision && xCollision) {
       return true;
     } else {
