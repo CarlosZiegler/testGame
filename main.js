@@ -24,5 +24,8 @@ function keyPressed() {
   if (keyCode == 32) {
     game.player.jump();
   }
+  if (keyCode == 73) {
+    game.player.useInsulin();
+  }
 }
 

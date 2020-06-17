@@ -2,7 +2,12 @@ class CollisionText {
     constructor(food, index) {
         this.x = game.player.x;
         this.y = game.player.y-10;
-        this.text1 = `${food}  GI: ${index}`;
+        this.text1;
+        if (food=='insulin') {
+            this.text1='*INSULIN COLLECTED*'
+        } else {
+            this.text1=`${food}  GI: ${index}`
+        }
         this.fade = 255;
         this.fadeAmount = 1;
       }

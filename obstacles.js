@@ -37,6 +37,11 @@ class Obstacles {
   }
   drawObstacles() {
     this.x -= 2;
+    this.yMod=1;
+    if (frameCount%30<15) {
+      this.yMod=-1;
+    } else {this.yMod=1}
+    this.y+=this.yMod;
     image(this.img, this.x, this.y, this.width, this.height);
   }
 }

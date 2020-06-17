@@ -17,7 +17,8 @@ class Game {
       { src: loadImage("assets/background/bg05.png"), x: 0, speed: 6 }
     ];
     this.playerImg = loadImage("assets/player/run.gif");
-    this.playerJmp = loadImage("assets/player/midair.gif")
+    this.playerJmp = loadImage("assets/player/midair.gif");
+    this.insulinImg = loadImage("assets/food/insulin.png");
     this.food = [
       {name: 'aubergine', src: loadImage("assets/food/aubergine.png"), gi: 15, health: 2},
       {name: 'avocado', src: loadImage("assets/food/avocado.png"), gi: 15, health: 5},
@@ -33,8 +34,8 @@ class Game {
       {name: 'cucumber', src: loadImage("assets/food/cucumber.png"), gi: 15, health: 2},
       {name: 'egg', src: loadImage("assets/food/egg.png"), gi: 0, health: 1},
       {name: 'fish', src: loadImage("assets/food/fish.png"), gi: 0, health: 3},
-      {name: 'greenApple', src: loadImage("assets/food/greenApple.png"), gi: 35, health: 3},
-      {name: 'greenPeas', src: loadImage("assets/food/greenPeas.png"), gi: 28, health: 3},
+      {name: 'green apple', src: loadImage("assets/food/greenApple.png"), gi: 35, health: 3},
+      {name: 'green peas', src: loadImage("assets/food/greenPeas.png"), gi: 28, health: 3},
       {name: 'hazelnut', src: loadImage("assets/food/hazelnut.png"), gi: 15, health: 2},
       {name: 'insulin', src: loadImage("assets/food/insulin.png"), gi: -100, health: 5},
       {name: 'lettuce', src: loadImage("assets/food/lettuce.png"), gi: 32, health: 5},
@@ -60,7 +61,7 @@ class Game {
       {name: 'popcorn', src: loadImage("assets/food/popcorn.png"), gi: 55, health: -4},
       {name: 'noodles', src: loadImage("assets/food/noodles.png"), gi: 42, health: -9},
       {name: 'banana', src: loadImage("assets/food/banana.png"), gi: 52, health: 1},
-      {name: 'iceCream', src: loadImage("assets/food/iceCream.png"), gi: 61, health: -12},
+      {name: 'ice cream', src: loadImage("assets/food/iceCream.png"), gi: 61, health: -12},
       {name: 'fries', src: loadImage("assets/food/fries.png"), gi: 75, health: -9},
       {name: 'dumplings', src: loadImage("assets/food/dumplings.png"), gi: 63, health: 0},
       {name: 'nigiri', src: loadImage("assets/food/nigiri.png"), gi: 57, health: 0},
@@ -73,7 +74,8 @@ class Game {
       {name: 'milk chocolate', src: loadImage("assets/food/chocolate.png"), gi: 42, health: -3},
       {name: 'chocolate cake', src: loadImage("assets/food/chocolateCake.png"), gi: 38, health: -10},
       {name: 'croissant', src: loadImage("assets/food/croissant.png"), gi: 67, health: -12},
-      {name: 'hotdog', src: loadImage("assets/food/hotdog.png"), gi: 80, health: -10}
+      {name: 'hotdog', src: loadImage("assets/food/hotdog.png"), gi: 80, health: -10},
+      {name: 'insulin', src: loadImage("assets/food/insulin.png"), gi: -100, health: 5}
     ]
   }
   setup() {
@@ -89,14 +91,14 @@ class Game {
     this.player.drawPlayer();
 //randomizing obstacles & unhealthy foods are prevalent in the bottom of the canvas.
     if (frameCount % 30 === 0 && frameCount % 60 !== 0) {
-      let randomY = random(0, height - 55);
+      let randomY = random(50, height - 55);
       let randomO = Math.floor(random(0, 34));
       console.log(randomO)
       this.obstacles.push(new Obstacles(randomY,randomO));
     }
     if (frameCount % 60 === 0) {
       let randomY = random(height-75, height - 32);
-      let randomO = Math.floor(random(35, 55));
+      let randomO = Math.floor(random(35, 56));
       console.log(randomO)
       this.obstacles.push(new Obstacles(randomY,randomO));
     }
@@ -120,6 +122,7 @@ class Game {
     this.player.drawStats();
     textAlign(LEFT);
     this.player.drawWords(width * 0.25);
+    this.player.drawInsulin();
   }
   endGame(option) {
     fill(255);

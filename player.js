@@ -1,11 +1,12 @@
 class Player {
   constructor() {
-    this.gravity = 0.6;
+    this.gravity = 0.7;
     this.speed = 9;
     this.jumps = 0;
     this.x = 150;
     this.health=100;
     this.bloodGlucose=120;
+    this.insulin=1;
   }
   setupPlayer() {
     this.y = height - 200; //cool falling effect
@@ -15,7 +16,7 @@ class Player {
   jump() {
     this.jumps += 1;
     if (this.jumps < 3) {
-      this.speed = -11 ;
+      this.speed = -13 ;
     }
   }
   drawPlayer() {
@@ -33,8 +34,12 @@ class Player {
     }
   }
   changeStats(hp, sugar) {
-    this.health+=hp;
-    this.bloodGlucose+=sugar;
+    if (sugar<0) {
+      this.insulin++;
+    } else {
+      this.health+=hp;
+      this.bloodGlucose+=sugar;
+    }
   }
   drawStats() {
     line(0, 15, this.health, 15);
@@ -45,6 +50,17 @@ class Player {
     text('health', 3, 7);
     fill(0);
     text('blood glucose', 3, 22);
+  }
+  drawInsulin() {
+    for (let i=0; i<this.insulin; i++) {
+image(game.insulinImg, 3+i*(game.insulinImg.width*0.7+2), 40, game.insulinImg.width*0.7, game.insulinImg.height*0.7)
+    }
+  }
+  useInsulin() {
+    if (this.insulin>0) {
+      this.insulin--;
+      this.bloodGlucose-=100;
+    }
   }
 }
 
