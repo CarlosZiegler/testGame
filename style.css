@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: VT323, sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+width: 450px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: slategray;
+  }
+
+p {
+    font-size: 1.3em;
+    text-align: center;
+    color: black;
+}
+
+.smalltext {
+    font-size: 0.8em;
+}
+
