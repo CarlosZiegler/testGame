@@ -11,24 +11,24 @@ class Obstacles {
     this.height = this.img.height;
   }
   checkCollision(player) {
-    let leftSide = this.x;
-    let rightSide = this.x + this.width;
-    let playerLeftSide = player.x;
-    let playerRightSide = player.x + player.width;
-    let topSide = this.y;
-    let bottomSide = this.y + this.height;
-    let playerTopSide = player.y;
-    let playerBottomSide = player.y + player.height;
+    let leftSide = this.x-5;
+    let rightSide = this.x + this.width+5;
+    let playerLeftSide = game.player.x-15;
+    let playerRightSide = game.player.x + game.player.width+25;
+    let topSide = this.y-5;
+    let bottomSide = this.y + this.height+5;
+    let playerTopSide = game.player.y-25;
+    let playerBottomSide = game.player.y + game.player.height+15;
     let xCollision =
-      leftSide > playerLeftSide - 10 &&
-      leftSide < playerRightSide + 10 &&
-      rightSide > playerLeftSide - 10 &&
-      rightSide < playerRightSide + 10;
+      leftSide > playerLeftSide &&
+      leftSide < playerRightSide &&
+      rightSide > playerLeftSide  &&
+      rightSide < playerRightSide;
     let yCollision =
-      topSide > playerTopSide - 10 &&
-      topSide < playerBottomSide + 10 &&
-      bottomSide > playerTopSide - 10 &&
-      bottomSide < playerBottomSide + 10;
+      topSide > playerTopSide &&
+      topSide < playerBottomSide &&
+      bottomSide > playerTopSide &&
+      bottomSide < playerBottomSide;
     if (yCollision && xCollision) {
       return true;
     } else {

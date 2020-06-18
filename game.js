@@ -18,6 +18,7 @@ class Game {
     ];
     this.playerImg = loadImage("assets/player/run.gif");
     this.playerJmp = loadImage("assets/player/midair.gif");
+    this.playerFall = loadImage("assets/player/landing.png")
     this.insulinImg = loadImage("assets/food/insulin.png");
     this.food = [
       {name: 'aubergine', src: loadImage("assets/food/aubergine.png"), gi: 15, health: 2},
@@ -93,13 +94,11 @@ class Game {
     if (frameCount % 30 === 0 && frameCount % 60 !== 0) {
       let randomY = random(50, height - 55);
       let randomO = Math.floor(random(0, 34));
-      console.log(randomO)
       this.obstacles.push(new Obstacles(randomY,randomO));
     }
     if (frameCount % 60 === 0) {
       let randomY = random(height-75, height - 32);
       let randomO = Math.floor(random(35, 56));
-      console.log(randomO)
       this.obstacles.push(new Obstacles(randomY,randomO));
     }
     this.obstacles.forEach((obstacle) => {

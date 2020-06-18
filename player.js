@@ -22,13 +22,16 @@ class Player {
   drawPlayer() {
     this.speed += this.gravity;
     this.y += this.speed;
+    console.log(this.speed);
     //14 pixels from the bottom is where the grass ends!
     if (this.y >= height - game.playerImg.height-14) {
       this.y = height - game.playerImg.height-14;
       this.jumps = 0;
     }
-    if (this.jumps>0) {
+    if (this.jumps>0 && this.speed<0) {
       image(game.playerJmp, this.x, this.y); //jumping character
+    } else if (this.jumps>0 && this.speed>0) {
+      image(game.playerFall, this.x, this.y);
     } else {
       image(game.playerImg, this.x, this.y);
     }
