@@ -13,12 +13,12 @@ class Obstacles {
   checkCollision(player) {
     let leftSide = this.x-5;
     let rightSide = this.x + this.width+5;
-    let playerLeftSide = game.player.x-15;
+    let playerLeftSide = game.player.x-25;
     let playerRightSide = game.player.x + game.player.width+25;
     let topSide = this.y-5;
     let bottomSide = this.y + this.height+5;
     let playerTopSide = game.player.y-25;
-    let playerBottomSide = game.player.y + game.player.height+15;
+    let playerBottomSide = game.player.y + game.player.height+25;
     let xCollision =
       leftSide > playerLeftSide &&
       leftSide < playerRightSide &&

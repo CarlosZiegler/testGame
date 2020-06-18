@@ -38,8 +38,14 @@ class Player {
   }
   changeStats(hp, sugar) {
     if (sugar<0) {
+      insulinVialCollect.play();
       this.insulin++;
     } else {
+      if (hp>0) {
+        goodFood.play();
+      } else {
+        badFood.play();
+      }
       this.health+=hp;
       this.bloodGlucose+=sugar;
     }
@@ -61,6 +67,7 @@ image(game.insulinImg, 3+i*(game.insulinImg.width*0.7+2), 40, game.insulinImg.wi
   }
   useInsulin() {
     if (this.insulin>0) {
+      insulinVialUse.play();
       this.insulin--;
       this.bloodGlucose-=100;
     }

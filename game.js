@@ -81,18 +81,18 @@ class Game {
   }
   setup() {
     this.player.setupPlayer();
-    textFont(this.font1);
-    textSize(18);
-    textAlign(CENTER, CENTER);
   }
   drawGame() {
     clear();
     frameRate(30);
+    textFont(this.font1);
+    textSize(18);
+    textAlign(CENTER, CENTER);
     this.background.drawBg();
     this.player.drawPlayer();
 //randomizing obstacles & unhealthy foods are prevalent in the bottom of the canvas.
     if (frameCount % 30 === 0 && frameCount % 60 !== 0) {
-      let randomY = random(50, height - 55);
+      let randomY = random(50, height - 60);
       let randomO = Math.floor(random(0, 34));
       this.obstacles.push(new Obstacles(randomY,randomO));
     }
@@ -133,5 +133,16 @@ class Game {
     text('GAME OVER.', width/2, height/2-30)
     textSize(18);
     text(option, width/2, height/2+30)
+  }
+  startGame() {
+    fill(255);
+    rect(0, 0, width, height);
+    textFont(this.font2);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    textSize(24);
+    text('READY FOR SOME GLUCOSE?', width/2, height/2-30)
+    textSize(18);
+    text('PRESS ANY KEY TO START.', width/2, height/2+30)
   }
 }
